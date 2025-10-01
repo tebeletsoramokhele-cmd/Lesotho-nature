@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lesotho in Pictures</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Gallery grid */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .gallery-container img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    /* Filter buttons */
+    .filter-buttons {
+      text-align: center;
+      margin: 15px 0;
+    }
+    .filter-buttons button {
+      margin: 5px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #0073e6;
+      color: white;
+      transition: background 0.3s;
+    }
+    .filter-buttons button:hover {
+      background-color: #005bb5;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none; 
+      position: fixed; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
+      background: rgba(0,0,0,0.8); 
+      justify-content: center; 
+      align-items: center;
+      z-index: 1000;
+    }
+    #lightbox img {
+      max-width: 90%; 
+      max-height: 80%; 
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+    }
+    #lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="gallery-page">
+  <!--nav -->
+  <header>
+  <nav>
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+    </ul>
+  </nav>
+  </header>
+
+  <!-- Main Heading -->
+  <h1>Lesotho in Pictures</h1>
+
+  <!-- Filter Buttons -->
+  <div class="filter-buttons">
+    <button onclick="filterGallery('all')">Show All</button>
+    <button onclick="filterGallery('village')">Show Villages</button>
+    <button onclick="filterGallery('mountain')">Show Mountains</button>
+    <button onclick="filterGallery('river')">Show Rivers</button>
+    <button onclick="filterGallery('cave')">Show Caves</button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div class="gallery-container">
+    <img src="c:\Users\delll\OneDrive\Desktop\teeby\Tsehlanyane-National-Park.jpg" 
+         alt="Traditional huts" data-category="village">
+    <img src="c:\Users\delll\OneDrive\Desktop\teeby\4178921103_cd3e04fa4a_z (1).jpg" 
+         alt="Tsehlanyane Park" data-category="mountain">
+    <img src="c:\Users\delll\OneDrive\Desktop\teeby\images.jpeg" 
+         alt="Lesotho Landscape" data-category="mountain">
+    <img src="c:\Users\delll\OneDrive\Desktop\teeby\The_circle_River.jpg" 
+         alt="Lesotho dam" data-category="river">
+    <img src="c:\Users\delll\OneDrive\Desktop\teeby\images (8).jpeg" 
+         alt="Lesotho cave" data-category="cave">
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span onclick="closeLightbox()">&times;</span>
+    <img id="lightboxImg" src="" alt="Large view">
+  </div>
+
+  <script>
+    // Gallery + Lightbox
+    const galleryImages = document.querySelectorAll('.gallery-container img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    // Lightbox click effect
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        closeLightbox();
+      }
+    });
+
+    // Filter function
+    function filterGallery(category) {
+      galleryImages.forEach(img => {
+        if (category === 'all' || img.getAttribute('data-category') === category) {
+          img.style.display = "block";
+        } else {
+          img.style.display = "none";
+        }
+      });
+    }
+
+    // JavaScript-powered hover zoom
+    galleryImages.forEach(img => {
+      img.addEventListener("mouseenter", () => {
+        img.style.transform = "scale(1.1)";
+      });
+      img.addEventListener("mouseleave", () => {
+        img.style.transform = "scale(1)";
+      });
+    });
+  </script>
+  <footer>
+    <p>&copy; 2025 explore Lesotho nature | Designed by Teeby</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

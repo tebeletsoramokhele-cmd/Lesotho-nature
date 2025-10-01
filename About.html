@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Discover Lesotho mountains</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Toggle section */
+    #extraInfo {
+      display: none;
+      margin-top: 10px;
+      color: #333;
+      font-style: italic;
+    }
+    #toggleBtn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #toggleBtn:hover {
+      background-color: #005bb5;
+    }
+
+    /* Fun Fact box */
+    #funFact {
+      margin: 20px auto;
+      padding: 15px;
+      max-width: 600px;
+      background-color: #f0f8ff;
+      border-left: 5px solid #0073e6;
+      border-radius: 5px;
+      font-style: italic;
+      font-size: 1.1em;
+      color: #333;
+    }
+  </style>
+</head>
+<body class="about-page">
+  
+  <nav>
+     <li><a href="Home.html">Home</a></li>
+     <li><a href="about.html">About</a></li>
+     <li><a href="gallery.html">Gallery</a></li>
+  </nav>
+
+  <h1>Discover Lesotho mountains</h1>
+
+  <section>
+    <h2>History & Culture</h2>
+    <img src="c:\Users\delll\OneDrive\Desktop\teeby\istockphoto-1255744083-612x612.jpg" alt="istockphoto 1255744083 612x612">
+    <p>
+      Lesotho, often called the “Kingdom in the Sky,” has a history deeply connected to its 
+      mountains and strong traditions. The Basotho nation was founded in the 1800s under the 
+      leadership of King Moshoeshoe I, who united many clans to defend against outside threats. 
+      His wisdom and diplomacy helped shape a proud identity that remains today. The country’s 
+      location high in the Drakensberg and Maloti mountains has always influenced how people 
+      live, farm, and protect their way of life.
+    </p>
+    <p>
+      Basotho culture is celebrated through music, dance, crafts, and the famous Basotho blanket, 
+      which is both practical and symbolic. The Sesotho language carries stories and traditions 
+      from generation to generation. Festivals and community gatherings are important, showing 
+      values of unity, respect, and resilience. Even today, visitors to Lesotho experience a culture 
+      that balances history, tradition, and a modern way of life. 
+    </p>
+    <blockquote>
+      “Lesotho’s strength is in its unity, culture, and the mountains that guard its people.”
+    </blockquote>
+  </section>
+
+  <!-- Section Must-See Attractions -->
+  <section>
+    <h2>Must-See Attractions</h2>
+    <p>
+      Lesotho is filled with natural wonders and historic landmarks that make it truly unique. 
+      Thaba Bosiu, known as the mountain fortress, is where King Moshoeshoe I defended and 
+      built the Basotho nation. It remains a powerful symbol of strength and independence. 
+      The Maletsunyane Falls in Semonkong is one of the tallest single-drop waterfalls in Africa, 
+      attracting adventurers and nature lovers from around the world.
+    </p>  
+      
+    <p>
+      Visitors can also explore the rugged Sani Pass, a high mountain road that connects Lesotho 
+      and South Africa, offering breathtaking views. The highlands provide opportunities for pony 
+      trekking, hiking, and skiing in winter at Afriski resort. From cultural villages to mountain 
+      landscapes, Lesotho’s attractions combine history, adventure, and stunning natural beauty.
+    </p>
+
+    <!-- Toggle content -->
+    <div id="extraInfo">
+      <p>
+        Did you know? Lesotho is the only country in the world that lies entirely above 1,000 meters (3,281 ft) in elevation!  
+        Its mountain climate and landscapes make it a paradise for outdoor adventurers year-round.
+      </p>
+    </div>
+    <button id="toggleBtn">Show More</button>
+  </section>  
+
+  <!-- Random Fun Fact Section -->
+  <div id="funFact"></div>
+
+  <script>
+    function changeHeading(){
+      document.querySelector("h1").textContent = "Welcome to Lesotho Mountains!";
+    }
+
+    // Show More / Show Less toggle
+    document.addEventListener("DOMContentLoaded", function(){
+      const btn = document.getElementById("toggleBtn");
+      const extra = document.getElementById("extraInfo");
+
+      btn.addEventListener("click", function(){
+        if(extra.style.display === "none" || extra.style.display === ""){
+          extra.style.display = "block";
+          btn.textContent = "Show Less";
+        } else {
+          extra.style.display = "none";
+          btn.textContent = "Show More";
+        }
+      });
+
+      // Array of Fun Facts
+      const facts = [
+        "Lesotho is the only country in the world entirely above 1,000 meters in elevation.",
+        "The Basotho blanket is not only clothing but also a cultural symbol passed through generations.",
+        "Maletsunyane Falls in Lesotho is one of Africa’s tallest single-drop waterfalls.",
+        "Lesotho produces some of the world’s highest-quality diamonds.",
+        "More than 80% of Lesotho’s population lives in rural areas, relying on farming and livestock."
+      ];
+
+      // Pick random fact
+      const randomFact = facts[Math.floor(Math.random() * facts.length)];
+
+      // Display fact
+      document.getElementById("funFact").textContent = " Fun Fact: " + randomFact;
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2025 explore Lesotho nature | Designed by Teeby</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
